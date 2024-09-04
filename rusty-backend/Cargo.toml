@@ -1,0 +1,42 @@
+[package]
+name = "rusty-backend"
+version = "0.1.0"
+edition = "2021"
+default-run = "rusty-backend"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.82"
+axum = {version = "0.7.5", features = ["macros"]}
+config = "0.14.0"
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0.116"
+sqlx = { version = "0.7.4", features = ["tls-rustls", "runtime-tokio", "postgres", "macros", "uuid", "time", "json"] }
+strum = "0.26.2"
+strum_macros = "0.26.2"
+thiserror = "1.0.58"
+time = { version = "0.3.36", features = ["serde", "serde-human-readable"] }
+tokio = { version = "1.37.0", features = ["full"] }
+tower = "0.4.13"
+uuid = { version = "1.8.0", features = ["serde", "v4"] }
+reqwest = { version = "0.11", features = ["json"] }
+jsonwebtoken = "9"
+axum-extra = "0.9.3"
+tower-cookies = "0.10.0"
+tower-http={ version = "0.5.2", features = ["fs", "trace", "cors"]}
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+url = {version = "2.5.0", features = ["serde"]}
+sea-query={ version = "0.30.7", features = ["derive", "attr", "backend-postgres", "with-json", "with-uuid"]}
+modql={ version = "0.3.10", features = ["with-sea-query"]}
+sea-query-binder = { version = "0", features = [
+    "sqlx-postgres",
+    "with-json",
+    "with-uuid"
+]}
+
+
+[dev-dependencies]
+httpc-test = {version="0.1.9"}
+pretty_assertions = {version = "1.4.0"}
+testcontainers-modules={version = "0.4.0", features = ["postgres", "blocking"]}
