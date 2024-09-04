@@ -3,12 +3,10 @@ use std::fmt::Debug;
 use axum::http::StatusCode;
 
 pub mod project_domain;
-pub mod url_domain;
 pub mod embed_domain;
 pub mod project_template_domain;
 
 pub use project_domain::ProjectDomain;
-pub use url_domain::UrlDomain;
 pub use embed_domain::EmbedDomain;
 pub use project_template_domain::ProjectTemplateDomain;
 

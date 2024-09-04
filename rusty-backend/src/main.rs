@@ -1,5 +1,5 @@
 use rusty_backend::{
-    domains::UrlDomain, repositories::RepositoryManager, routing_setup::setup_router, settings, AppState
+    repositories::RepositoryManager, routing_setup::setup_router, settings, AppState
 };
 use tracing::info;
 fn main() {
@@ -19,9 +19,12 @@ async fn async_main() {
     let app_state = AppState {
         repository_manager: RepositoryManager::new(&settings).await.unwrap(),
         settings,
-        urls_domain: UrlDomain::new(),
     };
 
+    if app_state.settings.run_migrations.unwrap_or(false) {
+    	sqlx::migrate!().run(app_state.repository_manager.db()).await.expect("Couldn't run migrations!");
+     	info!("Successfully applied db migrations!");
+    }
 
     let router = setup_router(app_state.clone()).with_state(app_state.clone());
     info!("Using config {:#?}", app_state);

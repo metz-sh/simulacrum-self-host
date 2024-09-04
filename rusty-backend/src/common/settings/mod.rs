@@ -32,6 +32,7 @@ pub struct Settings {
     pub server: server_settings::ServerSettings,
     pub db: db_settings::DbSettings,
     pub env: Environment,
+    pub run_migrations: Option<bool>,
 }
 
 impl Settings {

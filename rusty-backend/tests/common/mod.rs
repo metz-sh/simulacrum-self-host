@@ -1,6 +1,6 @@
 use std::env::{self, VarError};
 
-use rusty_backend::{db_settings::DbSettings, domains::UrlDomain, repositories::RepositoryManager, settings, AppState, Settings};
+use rusty_backend::{db_settings::DbSettings, repositories::RepositoryManager, settings, AppState, Settings};
 use testcontainers_modules::{postgres::Postgres, testcontainers::{runners::AsyncRunner, ContainerAsync, RunnableImage}};
 
 // Shouldn't be dropped!
@@ -28,25 +28,24 @@ impl TestContext {
             db: DbSettings { url: connection_string, ..original_settings.db },
             ..settings().clone()
         };
-        
+
         let rm = RepositoryManager::new(&new_settings).await.expect("Unable to create test database :(");
-        
+
         sqlx::migrate!().run(rm.db()).await.expect("Couldn't run migrations on test database :(");
-    
+
         let app_state = AppState {
             settings: new_settings.clone(),
             repository_manager: rm,
-            urls_domain: UrlDomain::new(),
         };
-    
+
         Self {
-            app_state, 
-            settings: new_settings, 
+            app_state,
+            settings: new_settings,
             crockery: Crockery { postgres_container: container },
             mock_server_host: parse_mock_server_url(),
         }
     }
-    
+
 }
 
 
