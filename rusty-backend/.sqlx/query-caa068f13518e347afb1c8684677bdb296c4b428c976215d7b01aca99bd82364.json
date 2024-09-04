@@ -1,0 +1,40 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "select project_id, name, description, project_art from projects where id = $1 and is_deleted=false",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "project_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "description",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 3,
+        "name": "project_art",
+        "type_info": "Jsonb"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "caa068f13518e347afb1c8684677bdb296c4b428c976215d7b01aca99bd82364"
+}

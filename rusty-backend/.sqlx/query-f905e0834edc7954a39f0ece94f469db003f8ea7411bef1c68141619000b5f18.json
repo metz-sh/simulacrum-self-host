@@ -1,0 +1,76 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            insert into projects(name, description, project_art, project_artifacts)\n            (select name, description, project_art, project_artifacts from project_templates where id = $1)\n            returning *\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 1,
+        "name": "project_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 2,
+        "name": "name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 3,
+        "name": "description",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 4,
+        "name": "created_at",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 5,
+        "name": "updated_at",
+        "type_info": "Timestamp"
+      },
+      {
+        "ordinal": 6,
+        "name": "project_art",
+        "type_info": "Jsonb"
+      },
+      {
+        "ordinal": 7,
+        "name": "project_artifacts",
+        "type_info": "Jsonb"
+      },
+      {
+        "ordinal": 8,
+        "name": "server_sequence",
+        "type_info": "Int4"
+      },
+      {
+        "ordinal": 9,
+        "name": "is_deleted",
+        "type_info": "Bool"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "f905e0834edc7954a39f0ece94f469db003f8ea7411bef1c68141619000b5f18"
+}

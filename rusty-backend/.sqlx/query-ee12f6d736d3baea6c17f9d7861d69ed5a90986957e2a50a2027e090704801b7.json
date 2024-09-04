@@ -1,0 +1,14 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                update projects set is_deleted = false where id = $1\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "ee12f6d736d3baea6c17f9d7861d69ed5a90986957e2a50a2027e090704801b7"
+}

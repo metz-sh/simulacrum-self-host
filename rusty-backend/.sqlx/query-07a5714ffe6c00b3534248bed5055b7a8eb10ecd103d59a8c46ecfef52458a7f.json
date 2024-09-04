@@ -1,0 +1,52 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "select project_id, name, description, project_art, project_artifacts, server_sequence from projects where id = $1 and is_deleted=false",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "project_id",
+        "type_info": "Uuid"
+      },
+      {
+        "ordinal": 1,
+        "name": "name",
+        "type_info": "Varchar"
+      },
+      {
+        "ordinal": 2,
+        "name": "description",
+        "type_info": "Text"
+      },
+      {
+        "ordinal": 3,
+        "name": "project_art",
+        "type_info": "Jsonb"
+      },
+      {
+        "ordinal": 4,
+        "name": "project_artifacts",
+        "type_info": "Jsonb"
+      },
+      {
+        "ordinal": 5,
+        "name": "server_sequence",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ]
+  },
+  "hash": "07a5714ffe6c00b3534248bed5055b7a8eb10ecd103d59a8c46ecfef52458a7f"
+}

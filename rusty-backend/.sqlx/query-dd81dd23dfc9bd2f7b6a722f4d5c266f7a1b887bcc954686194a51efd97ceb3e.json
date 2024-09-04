@@ -1,0 +1,24 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                update projects set project_artifacts = project_artifacts || $1\n                where id = $2 and $3 > server_sequence\n                and is_deleted=false\n                returning server_sequence\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "server_sequence",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Jsonb",
+        "Int4",
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "dd81dd23dfc9bd2f7b6a722f4d5c266f7a1b887bcc954686194a51efd97ceb3e"
+}
