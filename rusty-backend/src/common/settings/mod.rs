@@ -36,7 +36,7 @@ pub struct Settings {
 
 impl Settings {
     pub fn new() -> Result<Settings, ConfigError> {
-        //If this env var is true then a test config will be merged with the main on,
+        //If this env var is true then a test config will be merged with the main one,
         //overriding if anything clashes
         let load_test_config: bool = std::env::var("LOAD_TEST_CONFIG")
             .map(|var| var.parse().unwrap())
