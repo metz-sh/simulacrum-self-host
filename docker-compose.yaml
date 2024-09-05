@@ -1,6 +1,17 @@
 version: '3.8'
 
 services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      interval: 1s
+      retries: 5
+      start_period: 10s
+      timeout: 10s
   server:
     build:
       context: rusty-backend
@@ -10,14 +21,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
-  db:
-    image: postgres:16
-    environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: postgres
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
-      interval: 10s
-      retries: 5
-      start_period: 10s
-      timeout: 10s
+  webapp:
+    build:
+      context: app.metz
+    ports:
+      - "3000:3000"
+    env_file: ./app.metz/.env
+    depends_on:
+      server:
+        condition: service_started
