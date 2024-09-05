@@ -48,13 +48,6 @@ export default function (props: { template: ProjectTemplate }) {
 				</Box>
 			</Group>
 			<Group spacing={'10px'}>
-				<IconButtonComponent
-					tip="Show code"
-					icon={<RiCodeSSlashFill />}
-					onClick={() => {
-						window.open(`/try?templateId=${template.id}`, '_blank');
-					}}
-				/>
 				<MinimalCreateProjectComponent templateId={template.id} newTab={true} />
 			</Group>
 		</motion.div>
