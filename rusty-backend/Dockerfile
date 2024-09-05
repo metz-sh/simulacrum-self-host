@@ -22,7 +22,7 @@ RUN cargo build --release --bin rusty-backend
 FROM debian:trixie-slim AS runtime
 WORKDIR app
 RUN apt-get update
-RUN apt-get -y install openssl libssl-dev ca-certificates
+RUN apt-get -y install openssl libssl-dev ca-certificates curl
 COPY --from=builder /app/target/release/rusty-backend /usr/local/bin
 EXPOSE 3117
 ENTRYPOINT ["/usr/local/bin/rusty-backend"]
