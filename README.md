@@ -2,7 +2,7 @@
 This is a mono-repo forked from metz's hosted app that you can run yourself on your own infrastructure.
 
 ## Features
-- Sync projects to your own database
+- Supports syncing your projects to a `Postgres` database. 
 - Rust based backend for faster startup on serverless platforms
 - Next.JS based webapp for ease of development
 
