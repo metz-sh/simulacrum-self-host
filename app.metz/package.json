@@ -24,7 +24,7 @@
 		"@mantine/nprogress": "6.0.21",
 		"@mantine/prism": "6.0.21",
 		"@mantine/spotlight": "6.0.21",
-		"@metz/simulacrum": "file:simulacrum_1725197837893.tgz",
+		"@metz/simulacrum": "file:simulacrum_1727720191648.tgz",
 		"@tabler/icons-react": "^2.17.0",
 		"@types/animejs": "^3.1.7",
 		"@types/mixpanel-browser": "^2.38.1",
